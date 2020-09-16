@@ -1,3 +1,6 @@
+.DS_Store
 .ipynb_checkpoints/
+__pycache__/
 index.html
 Practice.ipynb
+Mission_to_Mars.ipynb
