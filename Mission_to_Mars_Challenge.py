@@ -17,7 +17,7 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
-        "hemispheres": mars_hemispheres(browser),
+        "hemispheres": mars_weather(browser),
         "last_modified": dt.datetime.now()
     }
     
@@ -102,9 +102,26 @@ def mars_facts():
     # Convert DataFrame into HTML format, add bootstrap
     return df.to_html(classes='table table-striped')
 
-# Mars Hemispheres
+# Mars Weather
 
-def mars_hemispheres(browser):
+def mars_weather(browser):
+    # Visit the weather website
+    url = 'https://mars.nasa.gov/insight/weather/'
+    browser.visit(url)
+
+    # Parse the data
+    html = browser.html
+    weather_soup = soup(html, 'html.parser')
+    
+    # Add try/except for error handling
+    #try:
+        # Scrape the Daily Weather Report table
+        #weather_table = weather_soup.find('table', class_='mb_table')
+        #print(weather_table.prettify())
+    #except:
+
+    # Hemispheres
+
     # Use browser to visit the URL 
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
@@ -113,6 +130,7 @@ def mars_hemispheres(browser):
     hemisphere_image_urls = []
 
     # Retrieve the image urls and titles for each hemisphere
+    html = browser.html
     for x in range(4):
         attributes = browser.find_by_tag('a')
         links = [attributes[4].find_by_tag('img'), attributes[6].find_by_tag('img'), 
