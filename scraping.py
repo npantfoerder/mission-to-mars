@@ -97,10 +97,9 @@ def mars_facts():
     
     # Assign columns and set index of DataFrame
     df.columns=['description', 'value']
-    df.set_index('description', inplace=True)
     
     # Convert DataFrame into HTML format, add bootstrap
-    return df.to_html(classes='table table-striped')
+    return df.to_html(index=False, classes='table table-striped')
 
 # Mars Hemispheres
 

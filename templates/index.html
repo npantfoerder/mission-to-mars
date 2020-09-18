@@ -8,17 +8,16 @@
         rel="stylesheet" 
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     >
-</head>
-
-<body>
     <style>
         body {
             margin: 5px;
             padding-bottom: 70px;
-            background-color: white !important;    
+            background-color: white !important
         }
     </style>
+</head>
 
+<body>
     <div class='container'>
         <!-- Add Jumbotron to Header -->
         <div class='jumbotron text-center'>
@@ -45,8 +44,8 @@
         </div>
 
         <!-- Section for Feaured Image and Facts table -->
-        <div class='row' id='mars-featured-image'>
-            <div class='col-md-8'>
+        <div class='row' id='mars-featured-image' style='border-style: solid;'>
+            <div class='col-md-8' style='border-style: solid;'>
                 <h2>Featured Mars Image</h2>
                 <img 
                     src={{ mars.featured_image }} 
@@ -55,7 +54,10 @@
                 >
             </div>
 
-            <div class='col-md-4'>
+            <div 
+                class='col-md-4' 
+                style='border-style: solid;'
+            >
                 <!-- Mars Facts -->
                 <div class='row' id='mars-facts'>
                     <h4>Mars Facts</h4>
