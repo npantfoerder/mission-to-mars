@@ -9,10 +9,12 @@ def scrape_all():
     # Initiate headless driver for deployment
     browser = Browser('chrome', executable_path='chromedriver', headless=True)
     
-    news_title, news_paragraph = mars_news(browser)
+    thumbnail, article_date, news_title, news_paragraph = mars_news(browser)
     
     # Run all scraping functions and store results in dictionary
     data = {
+        "thumbnail": thumbnail,
+        "article_date": article_date,
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
@@ -40,6 +42,12 @@ def mars_news(browser):
     try:
         slide_elem = news_soup.select_one('ul.item_list li.slide')
 
+        # Use the parent element to get the thumbnail URL
+        thumbnail = 'https://mars.nasa.gov' + slide_elem.select_one('div.list_image img')['src']
+
+        # Use the parent element to find div.list_date
+        article_date = slide_elem.find('div', class_='list_date').get_text()
+
         # Use the parent element to find the first `a` tag and save it as `news_title`
         news_title = slide_elem.find("div", class_='content_title').get_text()
 
@@ -49,7 +57,7 @@ def mars_news(browser):
     except AttributeError:
         return None, None
 
-    return news_title, news_p
+    return thumbnail, article_date, news_title, news_p
 
 # Featured Images
 
@@ -84,7 +92,7 @@ def featured_image(browser):
     
     return img_url
 
-# Mars Facts
+# Mars Planet Profile
 
 def mars_facts():
     # Add try/except for error handling
@@ -94,12 +102,9 @@ def mars_facts():
     
     except BaseException:
         return None
-    
-    # Assign columns and set index of DataFrame
-    df.columns=['description', 'value']
-    
+        
     # Convert DataFrame into HTML format, add bootstrap
-    return df.to_html(index=False, classes='table table-striped')
+    return df.to_html(header=False, index=False, classes='table table-striped')
 
 # Mars Hemispheres
 

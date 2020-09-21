@@ -20,11 +20,15 @@
 <body>
     <div class='container'>
         <!-- Add Jumbotron to Header -->
-        <div class='jumbotron text-center'>
-            <h1>Mission to Mars</h1>
+        <div class='jumbotron text-center'style='
+                background-image: url(https://www.pbs.org/wgbh/nova/media/original_images/shutterstock_1041249343.jpg);
+                background-size: cover;
+                background-position: center;'
+        >
+            <h1 style='color: white;'>Mission to Mars</h1>
             <!-- Add a button to activate scraping script -->
             <p>
-                <a class='btn btn-primary btn-lg' href='/scrape' role='button'>
+                <a class='btn btn-warning btn-lg' href='/scrape' role='button' style='color: black;'>
                     Scrape New Data
                 </a>
             </p>
@@ -32,10 +36,20 @@
 
         <!-- Add section for Mars News -->
         <div class='row' id='mars-news'>
-            <div class='col-md-12'>                
+            <h2>Latest Mars News</h2>
+            <div class='col-md-2'>
+                <img 
+                    src={{ mars.thumbnail }} 
+                    class='img-responsive' 
+                    alt='Responsive image'
+                    style='border: 1px solid black;'    
+                >
+            </div>
+            <div class='col-md-10'>                
                 <div class='media'>
+                    <!-- style='border-style: solid;' -->
                     <div class='media-body'>
-                        <h2>Latest Mars News</h2>
+                        <h5>{{ mars.article_date }}</h5>
                         <h4 class='media-heading'>{{ mars.news_title }}</h4>
                         <p>{{ mars.news_paragraph }}</p>
                     </div>
@@ -44,23 +58,21 @@
         </div>
 
         <!-- Section for Feaured Image and Facts table -->
-        <div class='row' id='mars-featured-image' style='border-style: solid;'>
-            <div class='col-md-8' style='border-style: solid;'>
+        <div class='row' id='mars-featured-image'>
+            <div class='col-md-8'>
                 <h2>Featured Mars Image</h2>
                 <img 
                     src={{ mars.featured_image }} 
                     class='img-responsive' 
                     alt='Responsive image'
+                    style='border: 3px solid black;'
                 >
             </div>
 
-            <div 
-                class='col-md-4' 
-                style='border-style: solid;'
-            >
+            <div class='col-md-4'>
                 <!-- Mars Facts -->
                 <div class='row' id='mars-facts'>
-                    <h4>Mars Facts</h4>
+                    <h2>Mars Planet Profile</h2>
                     {{ mars.facts | safe }}
                 </div>
             </div>
