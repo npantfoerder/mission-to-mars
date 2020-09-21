@@ -1,9 +1,7 @@
 # Mission to Mars - Web Scraping with HTML/CSS
 
 ## Purpose
-A junior data scientist with dreams of working at NASA wants to gather data about the mission to Mars from all over the web and display it in a central location. She needs help writing a script that gathers the information being searched for, ultimately building a web application that will scrape new data every time you tell it to by clicking a button.
-
-The steps of this project are outlined as follows:
+A junior data scientist with dreams of working at NASA wants to gather data about the mission to Mars from all over the web and display it in a central location. She needs help writing a script that gathers the information being searched for, ultimately building a web application that will scrape new data every time you tell it to by clicking a button. The steps of this project are outlined as follows:
 - Write a Python script that can nagivate webpages to collect the right information
 - Use MongoDB to store the data
 - Create the web application with Flask and then customize it with HTML and CSS
