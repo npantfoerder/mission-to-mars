@@ -3,7 +3,6 @@ from splinter import Browser
 from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt
-import numpy as np
 
 def scrape_all():
     # Initiate headless driver for deployment
