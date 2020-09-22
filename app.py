@@ -21,4 +21,4 @@ def scrape():
    return "Scraping Successful!"
 
 if __name__ == "__main__":
-   app.run(host='192.168.2.187', port=5000)
+   app.run(host='localhost', port=5000)
